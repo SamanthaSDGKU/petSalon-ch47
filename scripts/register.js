@@ -1,5 +1,4 @@
 let petSalon = {
-
     name:"the fashion pet",
     phone:"999-999-9999",
     adress:{
@@ -7,41 +6,65 @@ let petSalon = {
         city:"San Francisco",
         ZipCode:"12345",
     },
-    pets:[
-        {
-            name:"Scooby",
-            age:80,
-            gender:"male",
-        },
-        {
-            name:"Scrappy",
-            age:60,
-            gender:"male",
-        },
-        {
-            name:"Tweety",
-            age:85,
-            gender:"female",
-        },
-        {
-            name:"Sylvester",
-            age:85,
-            gender:"male",
-        },
-
-    ]
-
+    pets:[]
 }
-//just show the name of the pet
-console.log(petSalon.pets[2].name)
-//calculate the average age of the pets
-let totalAge = 0;
 
-for (let i=0; i<petSalon.pets.length; i++)
-{
-    totalAge=totalAge+petSalon.pets[i].age;
-    //totalAge+=petSalon.pets[i].age; this another way of do it
+//constructor (blueprint)
+function Pet(name,age,gender,service){
+    //attributes=parameter;
+    this.name=name;
+    this.age=age;
+    this.gender=gender;
+    this.service=service;
 }
-let averageAge = totalAge/petSalon.pets.length;
-console.log("total sum is "+ totalAge);
-console.log("the average age of the pets: " + averageAge);
+function isValid(pet){
+    let validation=true; // we are fine
+    if(pet.name==""){
+        validation=false;
+        alert("Please add a name");
+    }
+    if(pet.service==""){
+        validation=false;
+        alert("Please add a service");
+    }
+    return validation; //  returning the result of the validation
+}
+
+function register(){
+    let inputName = document.getElementById("txtName").value;
+    let inputAge = document.getElementById("txtAge").value;
+    let inputGender = document.getElementById("txtGender").value;
+    let inputService = document.getElementById("txtService").value;
+    
+    let newPet = new Pet(inputName,inputAge,inputGender,inputService);
+
+    if(isValid(newPet)==true){
+        petSalon.pets.push(newPet);
+        //displayCard();
+        displayRow();
+        displayServiceCount();
+        console.log(petSalon.pets);// displaying the pets array
+    }
+}
+
+function deletePet(petId){
+    console.log("Deleting pet ..." + petId);
+    document.getElementById(petId).remove();
+    petSalon.pets.splice(petId, 1);
+    displayRow();
+    displayServiceCount();
+}
+
+function init(){
+    let pet1 = new Pet("Scooby",99,"Male","Grooming");
+    let pet2 = new Pet("Scrappy",79,"Male","Vaccines");
+    let pet3 = new Pet("test 2",99,"Male","Grooming");
+    let pet4 = new Pet("test",79,"Male","Vaccines");
+    petSalon.pets.push(pet1,pet2,pet3,pet4);
+    
+    //displayCard();
+    displayRow();
+    displayServiceCount();
+}
+
+window.onload=init;// wait to render the HTML then load the init

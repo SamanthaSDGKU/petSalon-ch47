@@ -1,0 +1,16 @@
+#pets{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+.pet{
+    background-color: #dedede;
+    margin:10px;
+    padding: 10px;
+}
+.info-bar{
+    background-color: black;
+    color:white;
+    padding: 5px;
+    margin-top: 30px;
+    border-radius: 5px;
+}

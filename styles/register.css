@@ -1,0 +1,36 @@
+/*form style*/
+
+.form-container{
+    background-color: #dedede;
+    border-radius: 5px;
+    padding: 10px;
+}
+.input-container{
+    margin-bottom: 10px;
+}
+
+.input-container input,
+.input-container select{
+    width:70%;
+    padding: 3px;
+}
+.input-container label{
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+}
+
+
+.fa-virus{
+    color:rgb(2, 157, 2);
+}
+.fa-trash{
+    color:rgb(161, 161, 161);
+    font-size: 12px;
+    border: 1px solid rgb(150, 150, 150);
+    padding: 3px;
+    border-radius: 50%;
+}
+.delete-btn{
+    border:none;
+}
